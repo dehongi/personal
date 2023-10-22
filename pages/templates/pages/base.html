@@ -2,17 +2,20 @@
 
 {% load bootstrap5 %}
 
+{% block title %}
+  (no title)
+{% endblock %}
+
 {% block bootstrap5_content %}
   <div class="container">
-    <h1>
-      {% block title %}
-        (no title)
-      {% endblock %}
-    </h1>
-
-    <p>
-      <a href="{% url 'home' %}">home</a>
-    </p>
+    <ul class="nav bg-info">
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="#">ABOUT</a>
+      </li>
+    </ul>
 
     {% block content %}
       (no content)
