@@ -1,2 +1,2 @@
-# django_project
+# personal
 Personal website using Django web framework.
