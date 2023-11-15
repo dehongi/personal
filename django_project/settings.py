@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-party
     "bootstrap5",
+    "taggit",
     # Local
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
