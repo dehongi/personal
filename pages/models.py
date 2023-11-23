@@ -12,3 +12,13 @@ class Carousel(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Feature(models.Model):
+    title = models.CharField(max_length=50)
+    intro = models.TextField()
+    body = models.TextField()
+    image = models.ImageField(upload_to="features")
+
+    def __str__(self) -> str:
+        return self.title
