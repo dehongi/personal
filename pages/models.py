@@ -8,3 +8,6 @@ class Carousel(models.Model):
     body = models.TextField()
     url = models.URLField()
     image = models.ImageField(upload_to="carousel")
+
+    def __str__(self) -> str:
+        return self.title

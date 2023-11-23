@@ -44,21 +44,23 @@
             </div>
           </div>
         </div>
+        {% for carousel in carousels %}
         <div class="carousel-item">
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="#777" />
+            <img src="{{carousel.image.url}}"
           </svg>
 
           <div class="container">
             <div class="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>Some representative placeholder content for the third slide of this carousel.</p>
+              <h1>{{carousel.title}}</h1>
+              <p>{{carousel.body}}</p>
               <p>
-                <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
+                <a class="btn btn-lg btn-primary" href="{{carousel.url}}">Browse gallery</a>
               </p>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
