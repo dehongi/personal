@@ -22,3 +22,13 @@ class Feature(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Page(models.Model):
+    title = models.CharField(max_length=256)
+    image = models.ImageField(upload_to="pages")
+    intro = models.TextField()
+    body = models.TextField()
+
+    def __str__(self) -> str:
+        return self.title
