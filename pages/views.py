@@ -2,6 +2,8 @@ from typing import Any
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from django.conf import settings
+
 from .models import Carousel, Feature, Page
 
 # Create your views here.
@@ -20,6 +22,9 @@ class HomePageView(TemplateView):
 
         pages = Page.objects.all()
         context["pages"] = pages
+
+        context["site_name"] = settings.SITE_NAME
+        context["site_description"] = settings.SITE_DESCRIPTION
 
         return context
 
