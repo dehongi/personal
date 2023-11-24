@@ -23,6 +23,7 @@ class Post(models.Model):
         PUBLISHED = "PB", "PUBLISHED"
 
     title = models.CharField(max_length=250)
+    image = models.ImageField(upload_to="posts", default="images/post.jpg")
     slug = models.SlugField(max_length=250, unique_for_date="publish")
     author = models.ForeignKey(
         CustomUser, on_delete=models.CASCADE, related_name="blog_posts"
