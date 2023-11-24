@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 
 from .models import Carousel, Feature, Page
+from blog.models import Post
 
 # Create your views here.
 
@@ -22,6 +23,9 @@ class HomePageView(TemplateView):
 
         pages = Page.objects.all()
         context["pages"] = pages
+
+        posts = Post.objects.all()[:5]
+        context["posts"] = posts
 
         context["site_name"] = settings.SITE_NAME
         context["site_description"] = settings.SITE_DESCRIPTION
