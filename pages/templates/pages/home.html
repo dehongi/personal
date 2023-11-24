@@ -59,8 +59,8 @@
       </button>
     </div>
 
-    <!--    Marketing messaging and featurettes
-  ==================================================    -->
+    <!--     Marketing messaging and featurettes
+  ==================================================     -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
@@ -92,7 +92,7 @@
       {% for page in pages %}
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">{{ page.title }}</h2>
+            <h2 class="featurette-heading"><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
             <p class="lead">{{ page.intro }}</p>
           </div>
           <div class="col-md-5">
@@ -115,20 +115,19 @@
       <!-- Three columns of text below the carousel -->
       <div class="row g-3">
         {% for post in posts %}
-        <div class="col-lg-12">
-          <svg class="bd-placeholder-img" width="100%" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>{{post.title}}</title><rect width="100%" height="100%" fill="#eee" />
-            
-            <image xlink:href="{{ post.image.url }}" x="0" y="0" width="100%" height="100%" />
-            <foreignObject x="20" y="20" width="95%" height="100">
-            <h2 xmlns="http://www.w3.org/2000/xhtml"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
-            </foreignObject>
-            <foreignObject x="20" y="120" width="95%" height="180">
-            <p class="text-halo text-halo-sm text-black" xmlns="http://www.w3.org/2000/xhtml">{{post.body|truncatewords:100}}</p>
-            </foreignObject>
-          
-          </svg>
-        </div>
+          <div class="col-lg-12">
+            <svg class="bd-placeholder-img" width="100%" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>{{ post.title }}</title><rect width="100%" height="100%" fill="#eee" />
+
+              <image xlink:href="{{ post.image.url }}" x="0" y="0" width="100%" height="100%" />
+              <foreignObject x="20" y="20" width="95%" height="100">
+                <h2 xmlns="http://www.w3.org/2000/xhtml"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+              </foreignObject>
+              <foreignObject x="20" y="120" width="95%" height="180">
+                <p class="text-halo text-halo-sm text-black" xmlns="http://www.w3.org/2000/xhtml">{{ post.body|truncatewords:100 }}</p>
+              </foreignObject>
+            </svg>
+          </div>
         {% endfor %}
         <!-- /.col-lg-4 -->
       </div>

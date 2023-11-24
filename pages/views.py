@@ -1,6 +1,6 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 
 from django.conf import settings
 
@@ -39,3 +39,7 @@ class AboutPageView(TemplateView):
 
 class ContactPageView(TemplateView):
     template_name = "pages/contact.html"
+
+
+class PageDetailView(DetailView):
+    model = Page

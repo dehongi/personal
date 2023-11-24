@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
@@ -37,6 +38,9 @@ class Page(models.Model):
         if not self.id:
             self.slug = slugify(self.title)
         super(Page, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("pages:page_detail", kwargs={"slug": self.slug})
 
     def __str__(self) -> str:
         return self.title
