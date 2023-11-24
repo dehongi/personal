@@ -15,5 +15,4 @@ class PageAdmin(admin.ModelAdmin):
         "title",
     ]
     search_fields = ["title", "body"]
-    prepopulated_fields = {"slug": ("title",)}
     ordering = ["title", "intro"]
