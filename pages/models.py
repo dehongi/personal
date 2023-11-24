@@ -24,6 +24,7 @@ class Feature(models.Model):
 
 class Page(models.Model):
     title = models.CharField(max_length=256)
+    slug = models.SlugField(max_length=256, unique=True)
     image = models.ImageField(upload_to="pages")
     intro = models.TextField()
     body = models.TextField()
