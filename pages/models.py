@@ -29,10 +29,15 @@ class Feature(models.Model):
 
 class Page(models.Model):
     title = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=256, unique=True, editable=False)
+    slug = models.SlugField(max_length=256, unique_for_date="created", editable=False)
     image = models.ImageField(upload_to="pages")
     intro = models.TextField()
     body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    published = models.BooleanField(default=False)
+    show_on_home = models.BooleanField(default=False)
+    add_to_main_menu = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.id:
