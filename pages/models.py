@@ -40,8 +40,7 @@ class Page(models.Model):
     add_to_main_menu = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.title)
+        self.slug = slugify(self.title)
         super(Page, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
