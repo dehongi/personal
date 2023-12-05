@@ -41,5 +41,13 @@ class ContactPageView(TemplateView):
     template_name = "pages/contact.html"
 
 
+class PrivacyPageView(TemplateView):
+    template_name = "pages/privacy.html"
+
+
+class TermsOfServicePageView(TemplateView):
+    template_name = "pages/terms.html"
+
+
 class PageDetailView(DetailView):
     model = Page

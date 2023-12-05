@@ -49,8 +49,3 @@ class Page(models.Model):
 
     def __str__(self) -> str:
         return self.title
-
-
-""" @receiver(pre_save, sender=Page)
-def update_slug(sender, instance, *args, **kwargs):
-    instance.slug = slugify(instance.title) """
