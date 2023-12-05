@@ -1,10 +1,14 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import TemplateView, DetailView
+from django.urls import reverse
+from django.views.generic import TemplateView, DetailView, CreateView
 
 from django.conf import settings
 
-from .models import Carousel, Feature, Page
+from .models import Carousel, Feature, Page, Message
+
+from .forms import MessageForm
+
 from blog.models import Post
 
 # Create your views here.
@@ -37,8 +41,17 @@ class AboutPageView(TemplateView):
     template_name = "pages/about.html"
 
 
-class ContactPageView(TemplateView):
+class ContactPageView(CreateView):
+    model = Message
+    form_class = MessageForm
     template_name = "pages/contact.html"
+
+    def get_success_url(self) -> str:
+        return reverse("pages:contact_success")
+
+
+class ContactSuccessPage(TemplateView):
+    template_name = "pages/success.html"
 
 
 class PrivacyPageView(TemplateView):
