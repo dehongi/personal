@@ -3,11 +3,14 @@
 {% load blog_tags %}
 
 {% block title %}
-  My Blog
+  {{ post.title }}
 {% endblock %}
 
 {% block content %}
-  <h1>{{post.title}}</h1>
-<hr/>
-{{post.body|linebreaks}}
+  <div class="container">
+    <h1 class="text-center mt-5">{{ post.title }}</h1>
+    <hr class="mt-3 mb-5" />
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" />
+    <div class="text-justify">{{ post.body|linebreaks }}</div>
+  </div>
 {% endblock %}
