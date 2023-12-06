@@ -1,6 +1,6 @@
 {% extends 'pages/base.html' %}
 {% load bootstrap5 %}
-
+{% load static %}
 {% block title %}
   Home
 {% endblock %}
@@ -17,15 +17,16 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="#777" />
+            <rect width="100%" height="100%" fill="#eee" />
+            <image xlink:href="{% static 'images/banner.jpg' %}" x="0" y="0" width="100%" height="100%" />
           </svg>
 
           <div class="container">
             <div class="carousel-caption text-start">
-              <h1>{{ site_name }}</h1>
-              <p>{{ site_description }}</p>
+              <h1 class="text-dark">{{ site_name }}</h1>
+              <p class="text-dark">{{ site_description }}</p>
               <p>
-                <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
+                <a class="btn btn-lg btn-primary" href="{% url 'pages:contact' %}">Contact Us</a>
               </p>
             </div>
           </div>
@@ -33,14 +34,14 @@
         {% for carousel in carousels %}
           <div class="carousel-item">
             <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <rect width="100%" height="100%" fill="#777" />
+              <rect width="100%" height="100%" fill="#eee" />
               <image xlink:href="{{ carousel.image.url }}" x="0" y="0" width="100%" height="100%" />
             </svg>
 
             <div class="container">
-              <div class="carousel-caption">
-                <h1>{{ carousel.title }}</h1>
-                <p>{{ carousel.body }}</p>
+              <div class="carousel-caption text-start">
+                <h1 class="text-dark">{{ carousel.title }}</h1>
+                <p class="text-dark">{{ carousel.body }}</p>
                 <p>
                   <a class="btn btn-lg btn-primary" href="#">Click</a>
                 </p>
@@ -49,18 +50,18 @@
           </div>
         {% endfor %}
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <button class="carousel-control-prev text-dark" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <button class="carousel-control-next text-dark" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
 
-    <!--      Marketing messaging and featurettes
-  ==================================================      -->
+    <!--                    Marketing messaging and featurettes
+  ==================================================                    -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
@@ -117,7 +118,7 @@
         {% for post in posts %}
           <div class="col-lg-12">
             <svg class="bd-placeholder-img" width="100%" height="280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>{{ post.title }}</title><rect width="100%" height="100%" fill="#eee" />
+              <title>{{ post.title }}</title><rect width="100%" height="100%" fill="transparent" />
 
               <image xlink:href="{{ post.image.url }}" x="0" y="0" width="100%" height="100%" />
               <foreignObject x="20" y="20" width="95%" height="100">
