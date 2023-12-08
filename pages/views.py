@@ -64,3 +64,7 @@ class TermsOfServicePageView(TemplateView):
 
 class PageDetailView(DetailView):
     model = Page
+
+
+class FeatureDetailView(DetailView):
+    model = Feature

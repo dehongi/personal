@@ -43,7 +43,7 @@
                 <h1 class="text-dark">{{ carousel.title }}</h1>
                 <p class="text-dark">{{ carousel.body }}</p>
                 <p>
-                  <a class="btn btn-lg btn-primary" href="#">Click</a>
+                  <a class="btn btn-lg btn-primary" href="{% url "pages:contact" %}">Contact Us</a>
                 </p>
               </div>
             </div>
@@ -78,7 +78,7 @@
             <h2>{{ feature.title }}</h2>
             <p>{{ feature.intro }}</p>
             <p>
-              <a class="btn btn-secondary" href="#">View details &raquo;</a>
+              <a class="btn btn-secondary" href="{% url "pages:feature_detail" feature.id %}">View details &raquo;</a>
             </p>
           </div>
         {% endfor %}

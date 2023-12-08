@@ -8,6 +8,7 @@ from .views import (
     PrivacyPageView,
     TermsOfServicePageView,
     ContactSuccessPage,
+    FeatureDetailView,
 )
 
 app_name = "pages"
@@ -20,4 +21,5 @@ urlpatterns = [
     path("privacy/", PrivacyPageView.as_view(), name="privacy"),
     path("terms/", TermsOfServicePageView.as_view(), name="terms"),
     path("<slug:slug>/", PageDetailView.as_view(), name="page_detail"),
+    path("feature/<int:pk>/", FeatureDetailView.as_view(), name="feature_detail"),
 ]
