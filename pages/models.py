@@ -12,6 +12,7 @@ class Carousel(models.Model):
     title = models.CharField(max_length=256)
     body = models.TextField()
     image = models.ImageField(upload_to="carousel")
+    image_mobile = models.ImageField(upload_to="carousel", blank=True, null=True)
 
     def __str__(self) -> str:
         return self.title
