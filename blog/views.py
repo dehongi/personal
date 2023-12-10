@@ -1,5 +1,7 @@
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
+from django.views import View
 
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -20,19 +22,22 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        post = self.get_object()
-        form = CommentForm(initial={"post": post.id})
+        form = CommentForm()
         context["form"] = form
         comments = self.get_object().comments.filter(active=True)
         context["comments"] = comments
         return context
 
 
-class CommentCreateView(CreateView):
-    model = Comment
-    form_class = CommentForm
-
-    def get_success_url(self) -> str:
-        post_id = self.kwargs.get("post_id")
-        post = Post.objects.get(id=post_id)
-        return post.get_absolute_url()
+class CommentCreateView(View):
+    def post(self, request, post_id):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = get_object_or_404(Post, id=post_id)
+            comment.save()
+            return redirect("blog:post_detail_id", pk=post_id)
+        else:
+            # Handle the case where the form is not valid.
+            # You could redirect back to the post detail page with an error message.
+            pass

@@ -11,5 +11,10 @@ urlpatterns = [
         PostDetailView.as_view(),
         name="post_detail",
     ),
-    path("<int:post_id>/comment/add/", CommentCreateView.as_view(), name="comment_create"),
+    path("<int:pk>/", PostDetailView.as_view(), name="post_detail_id"),
+    path(
+        "<int:post_id>/comment/",
+        CommentCreateView.as_view(),
+        name="comment_create",
+    ),
 ]
