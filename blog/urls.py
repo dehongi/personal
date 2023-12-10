@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import PostListView, PostDetailView
+from .views import PostListView, PostDetailView, CommentCreateView
 
 app_name = "blog"
 
@@ -11,4 +11,5 @@ urlpatterns = [
         PostDetailView.as_view(),
         name="post_detail",
     ),
+    path("<int:post_id>/comment/add/", CommentCreateView.as_view(), name="comment_create"),
 ]

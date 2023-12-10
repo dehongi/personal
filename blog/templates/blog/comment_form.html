@@ -1,0 +1,11 @@
+{% extends 'pages/base.html' %}
+{% load blog_tags %}
+{% load bootstrap5 %}
+
+{% block content %}
+<form>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% endblock %}
