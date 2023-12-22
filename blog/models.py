@@ -2,6 +2,8 @@ from django.db.models.query import QuerySet
 from django.utils import timezone
 from django.db import models
 from django.urls import reverse
+from django.template.defaultfilters import slugify
+
 
 from taggit.managers import TaggableManager
 
@@ -54,6 +56,11 @@ class Post(models.Model):
             "blog:post_detail",
             args=[self.publish.year, self.publish.month, self.publish.day, self.slug],
         )
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
 
 
 class Comment(models.Model):
