@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-import mimetypes
+
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -48,15 +48,16 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         # Open the image using PIL
         img = Image.open(image)
 
+        # Convert the image to RGB format if it is not already in RGB format
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+
         # Create a thumbnail of the image
         img.thumbnail((512, 512))
 
         # Save the thumbnail image to memory using BytesIO
         thumbnail_io = BytesIO()
         img.save(thumbnail_io, format="JPEG")
-
-        # Get the MIME type of the image file
-        mime_type, _ = mimetypes.guess_type(image.name)
 
         # Save the thumbnail with the appropriate file format
         thumbnail = SimpleUploadedFile(
