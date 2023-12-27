@@ -7,61 +7,8 @@
 
 {% block content %}
   <main>
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        {% for carousel in carousels %}
-          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter }}" aria-label="{{ carousel.title }}"></button>
-        {% endfor %}
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <rect width="100%" height="100%" fill="#eee" />
-            <image xlink:href="{% static 'images/banner.jpg' %}" x="0" y="0" width="100%" height="100%" />
-          </svg>
-
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1 class="text-dark">{{ site_name }}</h1>
-              <p class="text-dark">{{ site_description }}</p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="{% url 'pages:contact' %}">Contact Us</a>
-              </p>
-            </div>
-          </div>
-        </div>
-        {% for carousel in carousels %}
-          <div class="carousel-item">
-            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <rect width="100%" height="100%" fill="#eee" />
-              <image xlink:href="{{ carousel.image.url }}" x="0" y="0" width="100%" height="100%" />
-            </svg>
-
-            <div class="container">
-              <div class="carousel-caption text-start">
-                <h1 class="text-dark">{{ carousel.title }}</h1>
-                <p class="text-dark">{{ carousel.body }}</p>
-                <p>
-                  <a class="btn btn-lg btn-primary" href="{% url "pages:contact" %}">Contact Us</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      <button class="carousel-control-prev text-dark" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next text-dark" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-    <!--                    Marketing messaging and featurettes
-  ==================================================                    -->
+    <!--                     Marketing messaging and featurettes
+  ==================================================                     -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
@@ -78,7 +25,7 @@
             <h2>{{ feature.title }}</h2>
             <p>{{ feature.intro }}</p>
             <p>
-              <a class="btn btn-secondary" href="{% url "pages:feature_detail" feature.id %}">View details &raquo;</a>
+              <a class="btn btn-secondary" href="{% url 'pages:feature_detail' feature.id %}">View details &raquo;</a>
             </p>
           </div>
         {% endfor %}
