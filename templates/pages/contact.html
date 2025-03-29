@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+  About
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h1>Contact Us</h1>
+    <p>You can reach us here:</p>
+    <form action="{% url 'pages:contact' %}" method="post" class="form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+      <button type="submit" class="btn btn-primary">Submit</button>
+      {% endbuttons %}
+    </form>
+  </div>
+{% endblock %}

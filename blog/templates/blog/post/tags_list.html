@@ -1,0 +1,17 @@
+<div class="tags-cloud">
+  {% for tag in tags %}
+    <a href="{% url 'blog:post_list_by_tag' tag.slug %}" class="tag-item text-decoration-none">
+      <span class="badge {% if tag.post_count > 5 %}
+          bg-primary
+        {% elif tag.post_count > 2 %}
+          bg-info
+        {% else %}
+          bg-secondary
+        {% endif %} mb-1 me-1">
+        {{ tag.name }} <span class="badge bg-light text-dark">{{ tag.post_count }}</span>
+      </span>
+    </a>
+  {% empty %}
+    <p>No tags yet.</p>
+  {% endfor %}
+</div>
