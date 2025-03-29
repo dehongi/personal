@@ -21,7 +21,7 @@ A personal website built with Django web framework featuring a blog, portfolio, 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/personal.git
+   git clone https://github.com/dehongi/personal.git
    cd personal
    ```
 
