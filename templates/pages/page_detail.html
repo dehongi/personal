@@ -1,28 +1,325 @@
-{% extends 'pages/base.html' %}
-{% load bootstrap5 %}
+{% extends 'base.html' %}
 
+{% load static %}
 {% block title %}
-  {{ page.title }}
+  {{ page.title }} | {{ site_name }}
 {% endblock %}
 
 {% block content %}
-  <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="{{ page.image.url }}" class="d-block mx-lg-auto img-fluid" alt="{{ page.title }}" width="700" height="500" loading="lazy" />
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">{{ page.title }}</h1>
-        <p class="lead">{{ page.intro }}</p>
-        
+  <!-- Page Hero Section -->
+  <section class="page-hero py-5 bg-light">
+    <div class="container">
+      <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="page-image-wrapper rounded-3 shadow overflow-hidden">
+            <img src="{{ page.image.url }}" class="img-fluid w-100 page-image" alt="{{ page.title }}" loading="lazy" onerror="this.src='https://via.placeholder.com/700x500?text=Page+Image';" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ps-lg-4">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{ page.title }}</h1>
+            <div class="mb-4">
+              <span class="badge bg-primary me-2">Page</span>
+              <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i> Updated: {{ page.updated|date:'F j, Y' }}</span>
+            </div>
+            <p class="lead">{{ page.intro }}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+              <a href="#page-content" class="btn btn-primary btn-lg px-4 me-md-2">Read More</a>
+              <a href="{% url 'pages:contact' %}" class="btn btn-outline-secondary btn-lg px-4">Contact Us</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="position-absolute top-0 start-0 bg-primary opacity-10" style="width: 50%; height: 100%; clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);"></div>
+  </section>
 
-    <div class="row g-5">
-      <div class="col-md-8">
-        <h3 class="pb-4 mb-4 fst-italic border-bottom">{{ page.title }}</h3>
-        <div class="blog-post">{{ page.body|linebreaks }}</div>
+  <!-- Page Content Section -->
+  <section id="page-content" class="page-content py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="content-wrapper bg-white p-4 rounded-3 shadow-sm">
+            <h2 class="fw-bold mb-4">{{ page.title }}</h2>
+
+            <div class="page-body">{{ page.body|linebreaks }}</div>
+
+            {% if page.images.all %}
+              <!-- Page Gallery -->
+              <div class="page-gallery mt-5">
+                <h3 class="fw-bold mb-4">Gallery</h3>
+                <div class="row g-3">
+                  {% for image in page.images.all %}
+                    <div class="col-md-4">
+                      <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                        <img src="{{ image.image.url }}" alt="{{ image.alt_text }}" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Gallery+Image';" />
+                      </div>
+                    </div>
+                  {% empty %}
+                    <div class="col-md-4">
+                      <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                        <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Gallery+Image';" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                        <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Gallery+Image';" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                        <img src="{{ page.image.url }}" alt="{{ page.title }}" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Gallery+Image';" />
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <!-- Additional Information -->
+          <div class="additional-info mt-4 p-4 bg-white rounded-3 shadow-sm">
+            <h3 class="fw-bold mb-4">Why Choose Us</h3>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="info-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                      <i class="bi bi-trophy fs-4"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="h5 fw-bold">Excellence</h4>
+                    <p>We strive for excellence in everything we do, delivering quality solutions that exceed expectations.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="info-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                      <i class="bi bi-lightbulb fs-4"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="h5 fw-bold">Innovation</h4>
+                    <p>We embrace creative thinking and innovative approaches to solve complex challenges.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="info-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                      <i class="bi bi-people fs-4"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="h5 fw-bold">Collaboration</h4>
+                    <p>We work closely with our clients, fostering partnerships that drive mutual success.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex">
+                  <div class="flex-shrink-0">
+                    <div class="info-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                      <i class="bi bi-shield-check fs-4"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="h5 fw-bold">Reliability</h4>
+                    <p>Our solutions are built with reliability in mind, ensuring consistent performance you can count on.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <!-- Quick Links -->
+          <div class="card mb-4 border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="h5 mb-0 fw-bold"><i class="bi bi-link-45deg me-2"></i> Quick Links</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0">
+                  <a href="{% url 'pages:home' %}" class="text-decoration-none"><i class="bi bi-house-door me-2 text-primary"></i> Home</a>
+                </li>
+                <li class="list-group-item px-0">
+                  <a href="{% url 'pages:about' %}" class="text-decoration-none"><i class="bi bi-info-circle me-2 text-primary"></i> About Us</a>
+                </li>
+                <li class="list-group-item px-0">
+                  <a href="{% url 'blog:post_list' %}" class="text-decoration-none"><i class="bi bi-journal-richtext me-2 text-primary"></i> Blog</a>
+                </li>
+                <li class="list-group-item px-0">
+                  <a href="{% url 'pages:contact' %}" class="text-decoration-none"><i class="bi bi-envelope me-2 text-primary"></i> Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Related Pages -->
+          <div class="card mb-4 border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="h5 mb-0 fw-bold"><i class="bi bi-collection me-2"></i> Related Pages</h3>
+            </div>
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush">
+                {% for related in related_pages|default:'' %}
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="{{ related.image.url }}" class="rounded" alt="{{ related.title }}" width="60" height="60" onerror="this.src='https://via.placeholder.com/60?text=Page';" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="{{ related.get_absolute_url }}" class="text-decoration-none stretched-link">{{ related.title }}</a></h4>
+                        <p class="small text-muted mb-0">{{ related.intro|truncatechars:60 }}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% empty %}
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Page" class="rounded" alt="Page" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Our Services</a></h4>
+                        <p class="small text-muted mb-0">Explore our comprehensive range of services.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Page" class="rounded" alt="Page" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Our Team</a></h4>
+                        <p class="small text-muted mb-0">Meet the talented professionals behind our success.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Page" class="rounded" alt="Page" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Case Studies</a></h4>
+                        <p class="small text-muted mb-0">Real-world examples of our successful projects.</p>
+                      </div>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="h5 mb-0 fw-bold"><i class="bi bi-chat-dots me-2"></i> Get in Touch</h3>
+            </div>
+            <div class="card-body">
+              <p>Have questions about this page or need more information? Contact us today!</p>
+              <a href="{% url 'pages:contact' %}" class="btn btn-primary w-100"><i class="bi bi-envelope me-2"></i>Contact Us</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="page-cta py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="p-5 text-center bg-primary text-white rounded-3 shadow">
+            <h2 class="fw-bold mb-3">Ready to Get Started?</h2>
+            <p class="lead mb-4">We're here to help you achieve your goals with our innovative solutions.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg px-5">Contact Us</a>
+              <a href="{% url 'blog:post_list' %}" class="btn btn-outline-light btn-lg px-5">Read Our Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_css %}
+  <style>
+    /* Page Detail Styles */
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .page-image-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .page-image {
+      transition: transform 0.5s ease;
+    }
+    
+    .page-image-wrapper:hover .page-image {
+      transform: scale(1.03);
+    }
+    
+    .page-body {
+      line-height: 1.8;
+    }
+    
+    .page-body p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .info-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .d-flex:hover .info-icon {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item {
+      transition: all 0.3s ease;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .list-group-item a {
+      transition: all 0.3s ease;
+      color: #24325d;
+    }
+    
+    .list-group-item a:hover {
+      color: #006fbe;
+      padding-left: 5px;
+    }
+  </style>
 {% endblock %}

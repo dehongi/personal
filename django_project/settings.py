@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third-party
-    "bootstrap5",
     "taggit",
     # Local
     "accounts.apps.AccountsConfig",

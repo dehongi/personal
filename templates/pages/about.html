@@ -1,20 +1,164 @@
-{% extends 'pages/base.html' %}
-{% load bootstrap5 %}
+{% extends 'base.html' %}
+
 {% load static %}
 {% block title %}
-  About
+  About | {{ site_name }}
 {% endblock %}
 
 {% block content %}
-  <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="{% static 'images/about.jpg' %}" class="d-block mx-lg-auto img-fluid" alt="About" width="700" height="500" loading="lazy" />
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">About</h1>
-        <p class="lead">Welcome to my website! My name is Hamed Mohammadi, and I am a Writer/Developer/Engineer. I created this website to share my passion for writin, developing software, my goals and achievements and provide a platform for my personal projects and writings. Explore my website to learn more about me and my interests!</p>
+  <!-- Hero Section -->
+  <section class="about-hero py-5 bg-light">
+    <div class="container col-xxl-8 px-4">
+      <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="{% static 'images/about.jpg' %}" class="d-block mx-lg-auto img-fluid rounded shadow" alt="About" width="700" height="500" loading="lazy" />
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">About Us</h1>
+          <p class="lead mb-4">Welcome to {{ site_name }}! We're dedicated to providing high-quality content and services in web development, software engineering, and digital solutions. Our mission is to create meaningful digital experiences that solve real-world problems.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{% url 'pages:contact' %}" class="btn btn-primary btn-lg px-4 me-md-2">Get in Touch</a>
+            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-secondary btn-lg px-4">Read Our Blog</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Our Mission -->
+  <section class="py-5">
+    <div class="container col-xxl-8 px-4">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+          <h2 class="fw-bold mb-3">Our Mission</h2>
+          <hr class="divider my-4 mx-auto" style="max-width: 100px; height: 3px; background-color: #006fbe;" />
+          <p class="lead">We strive to create innovative digital solutions that empower businesses and individuals to achieve their goals. Through thoughtful design and robust engineering, we build tools that make a difference.</p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-4 mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-lightbulb fs-4"></i>
+              </div>
+              <h3 class="fs-4 fw-bold">Innovation</h3>
+              <p class="mb-0">Pushing boundaries with creative solutions and forward-thinking approaches.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-4 mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-gear fs-4"></i>
+              </div>
+              <h3 class="fs-4 fw-bold">Quality</h3>
+              <p class="mb-0">Delivering excellence through meticulous attention to detail and best practices.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+              <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-4 mx-auto" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-people fs-4"></i>
+              </div>
+              <h3 class="fs-4 fw-bold">Community</h3>
+              <p class="mb-0">Building a supportive ecosystem of collaboration and knowledge-sharing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section class="py-5 bg-light">
+    <div class="container col-xxl-8 px-4">
+      <div class="row mb-4">
+        <div class="col-12 text-center">
+          <h2 class="fw-bold">Our Expertise</h2>
+          <hr class="divider my-4 mx-auto" style="max-width: 100px; height: 3px; background-color: #006fbe;" />
+        </div>
+      </div>
+      <div class="row g-4 mb-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="card-title fs-4 mb-3"><i class="bi bi-code-slash me-2 text-primary"></i>Web Development</h3>
+              <p class="card-text">Creating responsive, accessible, and modern websites using the latest technologies and frameworks. Our solutions focus on performance, security, and user experience.</p>
+              <div class="skills">
+                <span class="badge bg-primary me-1 mb-1">HTML/CSS</span>
+                <span class="badge bg-primary me-1 mb-1">JavaScript</span>
+                <span class="badge bg-primary me-1 mb-1">Python</span>
+                <span class="badge bg-primary me-1 mb-1">Django</span>
+                <span class="badge bg-primary me-1 mb-1">React</span>
+                <span class="badge bg-primary me-1 mb-1">Bootstrap</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="card-title fs-4 mb-3"><i class="bi bi-database me-2 text-primary"></i>Backend Engineering</h3>
+              <p class="card-text">Building robust server-side applications with scalable architectures, efficient database design, and secure API implementations.</p>
+              <div class="skills">
+                <span class="badge bg-primary me-1 mb-1">REST APIs</span>
+                <span class="badge bg-primary me-1 mb-1">SQL/NoSQL</span>
+                <span class="badge bg-primary me-1 mb-1">Authentication</span>
+                <span class="badge bg-primary me-1 mb-1">Cloud Services</span>
+                <span class="badge bg-primary me-1 mb-1">Microservices</span>
+                <span class="badge bg-primary me-1 mb-1">DevOps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="card-title fs-4 mb-3"><i class="bi bi-brush me-2 text-primary"></i>UI/UX Design</h3>
+              <p class="card-text">Crafting intuitive and engaging user interfaces with a focus on accessibility, usability, and modern design principles.</p>
+              <div class="skills">
+                <span class="badge bg-primary me-1 mb-1">Wireframing</span>
+                <span class="badge bg-primary me-1 mb-1">Prototyping</span>
+                <span class="badge bg-primary me-1 mb-1">Responsive Design</span>
+                <span class="badge bg-primary me-1 mb-1">User Testing</span>
+                <span class="badge bg-primary me-1 mb-1">Accessibility</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="card-title fs-4 mb-3"><i class="bi bi-bar-chart me-2 text-primary"></i>Digital Strategy</h3>
+              <p class="card-text">Developing comprehensive digital strategies that align technology solutions with business goals and user needs.</p>
+              <div class="skills">
+                <span class="badge bg-primary me-1 mb-1">Market Research</span>
+                <span class="badge bg-primary me-1 mb-1">Data Analysis</span>
+                <span class="badge bg-primary me-1 mb-1">SEO</span>
+                <span class="badge bg-primary me-1 mb-1">Content Strategy</span>
+                <span class="badge bg-primary me-1 mb-1">Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-5">
+    <div class="container col-xxl-8 px-4">
+      <div class="p-5 text-center bg-primary text-white rounded-3 shadow">
+        <h2 class="fw-bold mb-3">Ready to Work Together?</h2>
+        <p class="fs-5 mb-4">We're always looking for new challenges and exciting projects.</p>
+        <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg px-4">Contact Us Today</a>
+      </div>
+    </div>
+  </section>
 {% endblock %}

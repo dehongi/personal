@@ -1,28 +1,295 @@
-{% extends 'pages/base.html' %}
-{% load bootstrap5 %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-  {{ feature.title }}
+  {{ feature.title }} | {{ site_name }}
 {% endblock %}
 
 {% block content %}
-  <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="{{ feature.image.url }}" class="d-block mx-lg-auto img-fluid" alt="{{ feature.title }}" width="700" height="500" loading="lazy" />
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">{{ feature.title }}</h1>
-        <p class="lead">{{ feature.intro }}</p>
-        
+  <!-- Feature Hero Section -->
+  <section class="feature-hero py-5 bg-light">
+    <div class="container">
+      <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="feature-image-wrapper rounded-3 shadow overflow-hidden">
+            <img src="{{ feature.image.url }}" class="img-fluid w-100 feature-image" alt="{{ feature.title }}" loading="lazy" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="ps-lg-4">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{ feature.title }}</h1>
+            <div class="mb-4">
+              <span class="badge bg-primary me-2">Feature</span>
+              <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i> Updated: {{ feature.updated|date:'F j, Y' }}</span>
+            </div>
+            <p class="lead">{{ feature.intro }}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+              <a href="#feature-details" class="btn btn-primary btn-lg px-4 me-md-2">Learn More</a>
+              <a href="{% url 'pages:contact' %}" class="btn btn-outline-secondary btn-lg px-4">Contact Us</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="row g-5">
-      <div class="col-md-8">
-        <h3 class="pb-4 mb-4 fst-italic border-bottom">{{ page.title }}</h3>
-        <div class="blog-post">{{ feature.body|linebreaks }}</div>
+  <!-- Feature Details Section -->
+  <section id="feature-details" class="feature-details py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="feature-content bg-white p-4 rounded-3 shadow-sm">
+            <h2 class="fw-bold mb-4">About This Feature</h2>
+            <div class="feature-body">{{ feature.body|linebreaks }}</div>
+
+            <!-- Feature Benefits -->
+            <div class="mt-5">
+              <h3 class="fw-bold mb-4">Key Benefits</h3>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <div class="benefit-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                        <i class="bi bi-check2-circle fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="h5 fw-bold">Improved Efficiency</h4>
+                      <p>Streamline your workflow and save valuable time with our optimized processes.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <div class="benefit-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                        <i class="bi bi-shield-check fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="h5 fw-bold">Enhanced Security</h4>
+                      <p>State-of-the-art security measures to protect your data and privacy.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <div class="benefit-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                        <i class="bi bi-graph-up-arrow fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="h5 fw-bold">Scalable Solution</h4>
+                      <p>Easily scale as your needs grow without compromising performance.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <div class="benefit-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                        <i class="bi bi-people fs-4"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="h5 fw-bold">User-Friendly</h4>
+                      <p>Intuitive design and interface that's accessible to users of all skill levels.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature Gallery -->
+            <div class="feature-gallery mt-5">
+              <h3 class="fw-bold mb-4">Feature Gallery</h3>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                    <img src="{{ feature.image.url }}" alt="Gallery Image 1" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Feature+Gallery';" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                    <img src="{{ feature.image.url }}" alt="Gallery Image 2" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Feature+Gallery';" />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="gallery-item rounded-3 overflow-hidden shadow-sm">
+                    <img src="{{ feature.image.url }}" alt="Gallery Image 3" class="img-fluid w-100" onerror="this.src='https://via.placeholder.com/400x300?text=Feature+Gallery';" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <!-- Feature Specs -->
+          <div class="card mb-4 border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="h5 mb-0 fw-bold"><i class="bi bi-list-check me-2"></i> Specifications</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  <span><i class="bi bi-globe2 me-2 text-primary"></i> Platform</span>
+                  <span class="text-muted">Web, Mobile, Desktop</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  <span><i class="bi bi-clock-history me-2 text-primary"></i> Last Update</span>
+                  <span class="text-muted">{{ feature.updated|date:'F j, Y' }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  <span><i class="bi bi-code-slash me-2 text-primary"></i> Technology</span>
+                  <span class="text-muted">Django, Bootstrap 5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  <span><i class="bi bi-speedometer2 me-2 text-primary"></i> Performance</span>
+                  <span class="text-muted">High</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  <span><i class="bi bi-shield-lock me-2 text-primary"></i> Security Level</span>
+                  <span class="text-muted">Advanced</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Related Features -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+              <h3 class="h5 mb-0 fw-bold"><i class="bi bi-stars me-2"></i> Related Features</h3>
+            </div>
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush">
+                {% for related in related_features|default:'' %}
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="{{ related.image.url }}" class="rounded" alt="{{ related.title }}" width="60" height="60" onerror="this.src='https://via.placeholder.com/60?text=Feature';" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="{% url 'pages:feature_detail' related.id %}" class="text-decoration-none stretched-link">{{ related.title }}</a></h4>
+                        <p class="small text-muted mb-0">{{ related.intro|truncatechars:60 }}</p>
+                      </div>
+                    </div>
+                  </li>
+                {% empty %}
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Feature" class="rounded" alt="Feature" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Advanced Analytics</a></h4>
+                        <p class="small text-muted mb-0">Gain insights with our powerful analytics tools.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Feature" class="rounded" alt="Feature" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Cloud Integration</a></h4>
+                        <p class="small text-muted mb-0">Seamlessly connect with popular cloud platforms.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item p-3">
+                    <div class="d-flex align-items-center">
+                      <div class="flex-shrink-0">
+                        <img src="https://via.placeholder.com/60?text=Feature" class="rounded" alt="Feature" />
+                      </div>
+                      <div class="ms-3">
+                        <h4 class="h6 mb-1"><a href="#" class="text-decoration-none">Mobile Support</a></h4>
+                        <p class="small text-muted mb-0">Access from any device with full mobile support.</p>
+                      </div>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="feature-cta py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="p-5 text-center bg-primary text-white rounded-3 shadow">
+            <h2 class="fw-bold mb-3">Ready to Experience This Feature?</h2>
+            <p class="lead mb-4">Contact us to learn more about how this feature can benefit your project.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg px-5">Contact Us</a>
+              <a href="{% url 'pages:home' %}" class="btn btn-outline-light btn-lg px-5">Explore More Features</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_css %}
+  <style>
+    /* Feature Detail Page Styles */
+    .feature-image-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .feature-image {
+      transition: transform 0.5s ease;
+    }
+    
+    .feature-image-wrapper:hover .feature-image {
+      transform: scale(1.03);
+    }
+    
+    .feature-body {
+      line-height: 1.8;
+    }
+    
+    .feature-body p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .benefit-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .d-flex:hover .benefit-icon {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item {
+      transition: all 0.3s ease;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+  </style>
 {% endblock %}

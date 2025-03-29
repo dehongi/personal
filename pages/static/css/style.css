@@ -338,3 +338,244 @@ body {
     font-size: 0.75rem;
   }
 }
+
+/*--------------------------------------------------------------
+# About Page
+--------------------------------------------------------------*/
+.about-hero {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.about-hero h1 {
+  color: #24325d;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero .btn-primary {
+  background-color: #006fbe;
+  border-color: #006fbe;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.about-hero .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-hero .btn-outline-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.skills .badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+  transition: all 0.3s ease;
+}
+
+.skills .badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+  background-color: #006fbe;
+  height: 3px;
+  width: 100px;
+  margin: 1.5rem auto;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .about-hero .d-md-flex {
+    justify-content: center !important;
+  }
+
+  .about-hero img {
+    margin-bottom: 2rem;
+  }
+}
+
+/*--------------------------------------------------------------
+# Home Page
+--------------------------------------------------------------*/
+.hero-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.hero-image {
+  transition: transform 1.2s ease;
+  transform: scale(1.05);
+}
+
+.hero-image.animate {
+  transform: scale(1);
+}
+
+.hero-image-wrapper:hover .hero-image {
+  transform: scale(1.1);
+}
+
+.feature-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.feature-image {
+  transition: transform 0.8s ease;
+  transform: scale(1.05);
+}
+
+.feature-image.animate {
+  transform: scale(1);
+}
+
+.feature-image-wrapper:hover .feature-image {
+  transform: scale(1.1);
+}
+
+.page-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.page-image {
+  transition: transform 0.8s ease;
+  transform: scale(1.05);
+}
+
+.page-image.animate {
+  transform: scale(1);
+}
+
+.page-image-wrapper:hover .page-image {
+  transform: scale(1.1);
+}
+
+.post-image {
+  transition: transform 0.8s ease;
+  transform: scale(1.05);
+}
+
+.post-image.animate {
+  transform: scale(1);
+}
+
+.card:hover .post-image {
+  transform: scale(1.1);
+}
+
+.hover-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.hover-card.animate {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.divider {
+  background-color: #006fbe;
+  height: 3px;
+  width: 100px;
+  margin: 1.5rem auto;
+}
+
+.featurette-divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  margin: 3rem 0;
+}
+
+.featurette-heading {
+  color: #24325d;
+  transition: color 0.3s ease;
+}
+
+.featurette-heading:hover {
+  color: #006fbe;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 1rem;
+    text-align: center;
+  }
+
+  .hero-section .d-md-flex {
+    justify-content: center !important;
+    margin-top: 2rem;
+  }
+
+  .hero-section .btn {
+    margin-bottom: 0.5rem;
+  }
+
+  .features-section .card,
+  .blog-section .card {
+    margin-bottom: 2rem;
+  }
+}
